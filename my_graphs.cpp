@@ -6,9 +6,9 @@ using namespace std;
 
 struct Graph {
 	unordered_map<int, vector<int>> graphedges;
-    /*
-    Constructs a Graph with the given set of graphedges, where startingingpoint and theendingpoint represent the ordered list of
-    edges’ starting and theendpoints. throws an error if size of strart and theend don't match*/
+    //Test Case : if the end and start don't match, the function will throw an error
+    // Constructs a Graph with the given set of graphedges, where startingingpoint and theendingpoint represent the ordered list of
+    // edges’ starting and theendpoints.
 	Graph(const vector<int> startingingpoint, const vector<int>& theendingpoint) {
 		if (startingingpoint.size() != theendingpoint.size()) {
 			throw invalid_argument("Sizes of starting and theend don't match!");
@@ -25,12 +25,10 @@ struct Graph {
 			}
 		}
 	}
+ // Test cases : if the node doesn't exist the the funnction will throw an exception
+ //  The function numOutgoing will take as paramters the nodesId and
+ // will returns the number of outgoing graphedges from IDofnodes that is, graphedges with IDofnodes as the starting point.
 
-   /*
-   Returns the number of outgoing graphedges from IDofnodes
- – that is, graphedges with IDofnodes
- as the starting point.
- */
 int numOutgoing(const int IDofnodes) {
 		if (graphedges.count(IDofnodes)) {
 			return(graphedges[IDofnodes].size());
@@ -40,11 +38,8 @@ int numOutgoing(const int IDofnodes) {
 			return -1;
 		}
 	}
-    /*
-    accepts as parameter an int representing the IDofnodes
- and
-    returns a reference to the list of nodes to which IDofnodes
- has outgoing graphedges*/
+// Test case : if the node doesn't exist then the program will throw an exception
+// the function adjecnt accepts as parameter an int representing the IDofnodes and returns a reference to the list of nodes to which IDofnodes has outgoing graphedges
 	const vector<int>& adjecnt(const int IDofnodes) {
 		if (graphedges.count(IDofnodes)) {
 			return graphedges[IDofnodes];
@@ -54,17 +49,15 @@ int numOutgoing(const int IDofnodes) {
 		}
 	}
     public:
-/*
-    accepts as parameter an int representing the IDofnodes
- and
-    returns a reference to the list of nodes to which IDofnodes
- has outgoing graphedges*/
+
     const vector<int> &adjacent(const int IDofnodes)
     {
         if (graphedges.find(IDofnodes) == graphedges.end())
         throw invalid_argument("There exists no such node");
         return graphedges[IDofnodes];
     }
+// Test cases : if the edges are of size 0 then the program will throw and exception
+// the function isCyclic() takes no paramaters and returns a boolean depending if there is a cycle in a graph or not
 
 public:
     bool isCyclic(){
