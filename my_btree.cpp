@@ -13,25 +13,27 @@ struct BinarySearchTREE {
 
 private:
     vector< treeNode<T>*> listofnodez ;
+
+    // parentIndex takes as paramters the node and will return its parent
     int parentIndex(int node){
         return (node-1)/2;
     }
-// treesize : Parameters: takes as parameter the root of the tree
-// Returns the size of the tree
+
+    // treesize will take as parameter the root of the tree and will return its size
     int treeSize(treeNode<T>* root){
         if (root == NULL) return 0;
         return 1 + treeSize(root->left) + treeSize(root->right);
     }
-// Parameters
 
-
+    
+    // postorderprint will take as parameters the root of the tree and will return the post order print
     void postOrderPrint(treeNode<T>* root){
         if (root == NULL) return;
         postOrderPrint(root->left);
         postOrderPrint(root->right);
         cout<<*(root->data);
     }
-
+    // preorderprint will take as parameters the root of the tree and will return the preorder print
     void preOrderPrint(treeNode<T>* root){
         if (root == NULL) return;
         cout<<*(root->data);
@@ -43,6 +45,8 @@ public:
 // Returns : Return type of void . The tree will have the new node added
 
 // Test cases : if both the children of the node are null, then the node added is added on the left first 
+// if we find a node whose left child is empty, we will make the new value added as the left child of the node
+// if we find a node whose right child is empty, then we will make a the new value added as the right child of the node
 
     void addNode(T data){
         int *newnode = new int;
@@ -72,8 +76,7 @@ public:
     }
 }
 
-// Parameters : takes the value of the node added to be able to find it in the tree
-// return : return type of void. The tree will now have one less node
+//the function delete node will take as paramters the data to be added and will return the tree with the new data added
 
 // Test Cases: when a node cannot be deleted the function will print out CANNOT DELETE NODE
 // If the node deleted is a leaf we will simply remove it
@@ -108,7 +111,8 @@ public:
         if (listofnodez.size() == 0) return 0;
         return treeSize(listofnodez[0]);
     }
-
+//  the function subtree will take as parameters the the value for which we are going to find the subtree and 
+//  return the subtree of that node
     int subtreeSize(T data){
         int ind = -1;
         for(int i = 0; i<listofnodez.size(); i++){
