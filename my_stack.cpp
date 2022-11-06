@@ -14,20 +14,24 @@ private:
 };
 
 template <class T>
+// the fucntion emptystack() takes no paramters and returns a boolean indicating if the stack is empty or not
 bool Stack<T>::emptystack() const {
     return stackk.empty();
 }
 
 template <class T>
+// the function top() takes no paramters and returns what is at the top of the stack
 T &Stack<T>:: top() {
     return stack.back();
 }
 
+// the function push will take as a paramter an item to be pushed and will return the stack with this new item
 template <class T>
 void Stack<T>::push(const T &newitem) {
     stackk.push_back(newitem);
 }
 
+// the function pop takes no paramters and returns the stack without the item
 template <class T>
 void Stack<T>::pop() {
     if (!empty()) {
